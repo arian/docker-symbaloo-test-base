@@ -6,7 +6,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # update the repository sources list
 # and install dependencies
 RUN apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y curl mysql-client \
     && apt-get -y autoclean
 
 # nvm environment variables
@@ -28,3 +28,5 @@ ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 # confirm installation
 RUN node -v
 RUN npm -v
+
+RUN npm i -g xunit-viewer
