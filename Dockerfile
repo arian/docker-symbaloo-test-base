@@ -1,5 +1,7 @@
 FROM maven:3.5
 
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
