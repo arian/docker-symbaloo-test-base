@@ -8,7 +8,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 # update the repository sources list
 # and install dependencies
 RUN apt-get update \
-    && apt-get install -y curl nodejs \
+    && apt-get install -y curl nodejs rsync \
         mysql-client iceweasel xvfb x11-xserver-utils tomcat7 \
     && apt-get -y autoclean
 
@@ -27,3 +27,10 @@ RUN curl -o /tmp/firefox.tar.bz2 http://ftp.mozilla.org/pub/firefox/releases/$FI
 ENV PATH=$PATH:/usr/share/tomcat7/bin
 ENV CATALINA_BASE=/var/lib/tomcat7
 ENV CATALINA_HOME=/usr/share/tomcat7
+
+# https://bugs.launchpad.net/ubuntu/+source/tomcat7/+bug/1232258
+RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common \
+    && ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server \
+    && ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared \
+    && ln -s /var/lib/tomcat7/conf/ /usr/share/tomcat7/conf \
+    && ln -s /var/lib/tomcat7/logs/ /usr/share/tomcat7/logs
