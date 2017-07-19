@@ -33,4 +33,5 @@ RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common \
     && ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server \
     && ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared \
     && ln -s /var/lib/tomcat7/conf/ /usr/share/tomcat7/conf \
-    && ln -s /var/lib/tomcat7/logs/ /usr/share/tomcat7/logs
+    && ln -s /var/lib/tomcat7/logs/ /usr/share/tomcat7/logs \
+    && mkdir /var/lib/tomcat7/temp
