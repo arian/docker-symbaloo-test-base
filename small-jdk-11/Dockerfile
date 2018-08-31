@@ -1,4 +1,4 @@
-FROM maven:3.5-jdk-8
+FROM maven:3.5-jdk-11
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
