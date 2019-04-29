@@ -1,0 +1,25 @@
+image: docker:stable
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+
+small:
+  stage: build 
+  script:
+    - docker build -t registry.symbaloo.tw/base-image:small small
+  after_script:
+    - docker push registry.symbaloo.tw/base-image:small
+
+jdk11:
+  stage: build 
+  script:
+    - docker build -t registry.symbaloo.tw/base-image:jdk11 small-jdk-11
+  after_script:
+    - docker push registry.symbaloo.tw/base-image:jdk11
