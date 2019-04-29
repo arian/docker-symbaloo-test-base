@@ -9,6 +9,7 @@ services:
 
 small:
   stage: build 
+  tags: [ dind ]
   script:
     - docker build -t registry.symbaloo.tw/base-image:small small
   after_script:
@@ -16,6 +17,7 @@ small:
 
 jdk11:
   stage: build 
+  tags: [ dind ]
   script:
     - docker build -t registry.symbaloo.tw/base-image:jdk11 small-jdk-11
   after_script:
